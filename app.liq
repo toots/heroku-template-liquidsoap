@@ -14,7 +14,7 @@ port =
   end
 
 # Register a "Hello World!" handler at "/hello"
-def hello(~method,~protocol,~data,~headers,uri) =
+def hello(~protocol,~data,~headers,uri) =
    http_response(
      protocol=protocol,
      code=200,
@@ -22,7 +22,7 @@ def hello(~method,~protocol,~data,~headers,uri) =
    )
 end
 
-harbor.http.register(port=port,"/hello", hello)
+harbor.http.register(port=port,method="GET","/hello", hello)
 
 # Grab radiopi's reggae channel
 s = input.http("http://radiopi.org:8080/reggae")
